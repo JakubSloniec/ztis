@@ -1,6 +1,5 @@
 package pl.edu.agh.ztis.aspect;
 
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,74 +10,74 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
 /**
- * Created by Jakub Sloniec on 10.02.2016.
+ * Created by Jakub Sloniec on 10.03.2016.
  */
 
 @Aspect
 @Component
 public class LoggingAspect {
 
-    @Pointcut("execution(* pl.edu.agh.ztis.controller..*.*(..))")
-    public void restControlPointcut() {
-    }
+	@Pointcut("execution(* pl.edu.agh.ztis.controller..*.*(..))")
+	public void restControlPointcut() {
+	}
 
-    @Pointcut("execution(* pl.edu.agh.ztis.service..*.*(..))")
-    public void sevicePointcut() {
-    }
+	@Pointcut("execution(* pl.edu.agh.ztis.service..*.*(..))")
+	public void sevicePointcut() {
+	}
 
-    @Pointcut("restControlPointcut() || sevicePointcut()")
-    public void combinedPointcut() {
-    }
+	@Pointcut("restControlPointcut() || sevicePointcut()")
+	public void combinedPointcut() {
+	}
 
-    @Around("combinedPointcut()")
-    public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
-        final Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
-        Object retVal;
+	@Around("combinedPointcut()")
+	public Object logMethod(ProceedingJoinPoint joinPoint) throws Throwable {
+		final Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass().getName());
+		Object retVal;
 
-        try {
-            StringBuffer startMessageStringBuffer = new StringBuffer();
+		try {
+			StringBuffer startMessageStringBuffer = new StringBuffer();
 
-            startMessageStringBuffer.append("Start method ");
-            startMessageStringBuffer.append(joinPoint.getSignature().getName());
-            startMessageStringBuffer.append("(");
+			startMessageStringBuffer.append("Start method ");
+			startMessageStringBuffer.append(joinPoint.getSignature().getName());
+			startMessageStringBuffer.append("(");
 
-            Object[] args = joinPoint.getArgs();
-            for (Object arg : args) {
-                startMessageStringBuffer.append(arg).append(",");
-            }
-            if (args.length > 0) {
-                startMessageStringBuffer.deleteCharAt(startMessageStringBuffer.length() - 1);
-            }
+			Object[] args = joinPoint.getArgs();
+			for (Object arg : args) {
+				startMessageStringBuffer.append(arg).append(",");
+			}
+			if (args.length > 0) {
+				startMessageStringBuffer.deleteCharAt(startMessageStringBuffer.length() - 1);
+			}
 
-            startMessageStringBuffer.append(")");
+			startMessageStringBuffer.append(")");
 
-            logger.info(startMessageStringBuffer.toString());
+			logger.info(startMessageStringBuffer.toString());
 
-            StopWatch stopWatch = new StopWatch();
-            stopWatch.start();
+			StopWatch stopWatch = new StopWatch();
+			stopWatch.start();
 
-            retVal = joinPoint.proceed();
+			retVal = joinPoint.proceed();
 
-            stopWatch.stop();
+			stopWatch.stop();
 
-            StringBuffer endMessageStringBuffer = new StringBuffer();
-            endMessageStringBuffer.append("Finish method ");
-            endMessageStringBuffer.append(joinPoint.getSignature().getName());
-            endMessageStringBuffer.append("(..); execution time: ");
-            endMessageStringBuffer.append(stopWatch.getTotalTimeMillis());
-            endMessageStringBuffer.append(" ms;");
+			StringBuffer endMessageStringBuffer = new StringBuffer();
+			endMessageStringBuffer.append("Finish method ");
+			endMessageStringBuffer.append(joinPoint.getSignature().getName());
+			endMessageStringBuffer.append("(..); execution time: ");
+			endMessageStringBuffer.append(stopWatch.getTotalTimeMillis());
+			endMessageStringBuffer.append(" ms;");
 
-            logger.info(endMessageStringBuffer.toString());
-        } catch (Throwable ex) {
-            StringBuffer errorMessageStringBuffer = new StringBuffer();
+			logger.info(endMessageStringBuffer.toString());
+		} catch (Throwable ex) {
+			StringBuffer errorMessageStringBuffer = new StringBuffer();
 
-            // Create error message
-            logger.error(errorMessageStringBuffer.toString(), ex);
+			// Create error message
+			logger.error(errorMessageStringBuffer.toString(), ex);
 
-            throw ex;
-        }
+			throw ex;
+		}
 
-        return retVal;
-    }
+		return retVal;
+	}
 }
 

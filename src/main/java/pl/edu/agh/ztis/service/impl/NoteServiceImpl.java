@@ -15,11 +15,11 @@ import java.util.List;
 @Service
 public class NoteServiceImpl implements NoteService {
 
-    @Autowired
-    private NoteRepository noteRepository;
+	@Autowired
+	private NoteRepository noteRepository;
 
-    @Override
-    public List<Note> getAll() {
-        return (List<Note>) noteRepository.findAll();
-    }
+	@Override
+	public List<Note> getAll() {
+		return (List<Note>) noteRepository.findAll();
+	}
 }

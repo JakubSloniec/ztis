@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by Jakub Sloniec on 21.03.2016.
  */
+
 @Controller
 @SpringBootApplication
 //public class Application extends SpringBootServletInitializer {
 public class Application {
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(Application.class, args);
-    }
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Application.class, args);
+	}
 
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-        return "Hello World!";
-    }
+	@RequestMapping("/")
+	public String swagger() {
+		return "redirect:/swagger-ui.html";
+	}
 }
