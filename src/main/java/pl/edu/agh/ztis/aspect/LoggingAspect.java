@@ -65,7 +65,10 @@ public class LoggingAspect {
 			endMessageStringBuffer.append(joinPoint.getSignature().getName());
 			endMessageStringBuffer.append("(..); execution time: ");
 			endMessageStringBuffer.append(stopWatch.getTotalTimeMillis());
-			endMessageStringBuffer.append(" ms;");
+			endMessageStringBuffer.append(" ms; ");
+			endMessageStringBuffer.append("returning: ");
+			endMessageStringBuffer.append(retVal.toString());
+			endMessageStringBuffer.append(";");
 
 			logger.info(endMessageStringBuffer.toString());
 		} catch (Throwable ex) {

@@ -8,5 +8,8 @@ import java.util.List;
  * Created by Jakub Sloniec on 21.03.2016.
  */
 public interface NoteService {
-    List<Note> getAll();
+
+	List<Note> getAll();
+
+	Note getOne(Long id);
 }

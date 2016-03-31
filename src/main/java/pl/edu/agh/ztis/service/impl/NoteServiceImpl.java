@@ -22,4 +22,9 @@ public class NoteServiceImpl implements NoteService {
 	public List<Note> getAll() {
 		return (List<Note>) noteRepository.findAll();
 	}
+
+	@Override
+	public Note getOne(Long id) {
+		return noteRepository.findOne(id);
+	}
 }
