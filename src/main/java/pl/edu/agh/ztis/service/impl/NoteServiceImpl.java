@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.ztis.entity.Note;
 import pl.edu.agh.ztis.repository.NoteRepository;
+import pl.edu.agh.ztis.service.CsvParserService;
 import pl.edu.agh.ztis.service.NoteService;
 
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.List;
 
 @Service
 public class NoteServiceImpl implements NoteService {
+
+	@Autowired
+	private CsvParserService csvParserService;
 
 	@Autowired
 	private NoteRepository noteRepository;
