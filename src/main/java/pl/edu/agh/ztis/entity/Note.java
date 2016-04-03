@@ -1,7 +1,5 @@
 package pl.edu.agh.ztis.entity;
 
-import io.swagger.annotations.ApiModelProperty;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,23 +11,26 @@ import java.util.Date;
 public abstract class Note {
 
 	@Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
 
+	@Column(name = "sourceId")
+	private Long sourceId;
+
 	@Enumerated(EnumType.STRING)
-	@Column(name = "language", length = 5, nullable = false)
+	@Column(name = "language", length = 10, nullable = false)
 	private Language language;
 
-	@Column(name = "country", length = 5, nullable = false)
+	@Column(name = "country", length = 10, nullable = false)
 	private String country;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "magazine", length = 10, nullable = false)
 	private Magazine magazine;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "time", length = 10, nullable = false)
-    private Date time;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "time", length = 10, nullable = false)
+	private Date time;
 
 	@Lob
 	@Column(name = "title", nullable = false)
@@ -39,16 +40,23 @@ public abstract class Note {
 	@Column(name = "content", nullable = false)
 	private String content;
 
-    @Column(name = "mentionedcity", length = 30)
-    private String mentionedCity;
+	@Column(name = "mentionedcity", length = 30)
+	private String mentionedCity;
 
-	@ApiModelProperty(value = "note ID", required = true)
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getSourceId() {
+		return sourceId;
+	}
+
+	public void setSourceId(Long sourceId) {
+		this.sourceId = sourceId;
 	}
 
 	public Language getLanguage() {
@@ -75,15 +83,15 @@ public abstract class Note {
 		this.magazine = magazine;
 	}
 
-    public Date getTime() {
-        return time;
-    }
+	public Date getTime() {
+		return time;
+	}
 
-    public void setTime(Date time) {
-        this.time = time;
-    }
+	public void setTime(Date time) {
+		this.time = time;
+	}
 
-    public String getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
@@ -99,29 +107,30 @@ public abstract class Note {
 		this.content = content;
 	}
 
-    public String getMentionedCity() {
-        return mentionedCity;
-    }
+	public String getMentionedCity() {
+		return mentionedCity;
+	}
 
-    public void setMentionedCity(String mentionedCity) {
-        this.mentionedCity = mentionedCity;
-    }
+	public void setMentionedCity(String mentionedCity) {
+		this.mentionedCity = mentionedCity;
+	}
 
-    @Override
-    public String toString() {
-        return "Note{" +
-                "id=" + id +
-                ", language=" + language +
-                ", country='" + country + '\'' +
-                ", magazine=" + magazine +
-                ", time=" + time +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", mentionedCity='" + mentionedCity + '\'' +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Note{" +
+				"id=" + id +
+				", sourceId=" + sourceId +
+				", language=" + language +
+				", country='" + country + '\'' +
+				", magazine=" + magazine +
+				", time=" + time +
+				", title='" + title + '\'' +
+				", content='" + content + '\'' +
+				", mentionedCity='" + mentionedCity + '\'' +
+				'}';
+	}
 
-    @Override
+	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;

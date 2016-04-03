@@ -41,13 +41,13 @@ public class LoggingAspect {
 			startMessageStringBuffer.append(joinPoint.getSignature().getName());
 			startMessageStringBuffer.append("(");
 
-			Object[] args = joinPoint.getArgs();
-			for (Object arg : args) {
-				startMessageStringBuffer.append(arg).append(",");
-			}
-			if (args.length > 0) {
-				startMessageStringBuffer.deleteCharAt(startMessageStringBuffer.length() - 1);
-			}
+//			Object[] args = joinPoint.getArgs();
+//			for (Object arg : args) {
+//				startMessageStringBuffer.append(arg).append(",");
+//			}
+//			if (args.length > 0) {
+//				startMessageStringBuffer.deleteCharAt(startMessageStringBuffer.length() - 1);
+//			}
 
 			startMessageStringBuffer.append(")");
 
@@ -66,9 +66,11 @@ public class LoggingAspect {
 			endMessageStringBuffer.append("(..); execution time: ");
 			endMessageStringBuffer.append(stopWatch.getTotalTimeMillis());
 			endMessageStringBuffer.append(" ms; ");
-			endMessageStringBuffer.append("returning: ");
-			endMessageStringBuffer.append(retVal.toString());
-			endMessageStringBuffer.append(";");
+//			if (retVal != null) {
+//				endMessageStringBuffer.append("returning: ");
+//				endMessageStringBuffer.append(retVal.toString());
+//				endMessageStringBuffer.append(";");
+//			}
 
 			logger.info(endMessageStringBuffer.toString());
 		} catch (Throwable ex) {
