@@ -3,14 +3,18 @@ package pl.edu.agh.ztis.service.impl;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.ztis.configuration.Configuration;
 import pl.edu.agh.ztis.entity.*;
 import pl.edu.agh.ztis.service.CsvParserService;
+import pl.edu.agh.ztis.service.NoteService;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.List;
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -22,10 +26,33 @@ import java.util.stream.Collectors;
 @Service
 public class CsvParserServiceImpl implements CsvParserService {
 
-//    @Override
-//    public NotesTuple parseSampleDataNotes(Path directory) throws Exception {
-//        return parseNotes(directory, Configuration.SAMPLE_DATA_TAGGED_CSV_FILE_NAME);
-//    }
+    private static final Logger LOGGER = LogManager.getLogger(CsvParserServiceImpl.class);
+
+    @Autowired
+    private NoteService noteService;
+
+    @Override
+    public void importData() throws Exception {
+        Files.walkFileTree(Configuration.GEOMEDIA_FULL_DATA_PATH, new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                try {
+                    if (dir.getFileName().toString().matches(Configuration.DATA_DIRECTORY_REGEX)) {
+                        NotesTuple notesTuple = parseFullDataNotes(dir);
+                        LOGGER.info(dir.getFileName() + " raw notes: " + notesTuple.getRawNotes().size());
+                        LOGGER.info(dir.getFileName() + " unique notes: " + notesTuple.getUniqueNotes().size());
+                        LOGGER.info(dir.getFileName() + " tagged notes: " + notesTuple.getTaggedNotes().size());
+                        // Save RawNotes
+                        // Save UniqueNotes
+                        // Save TaggedNotes
+                    }
+                    return FileVisitResult.CONTINUE;
+                } catch (Exception e) {
+                    throw new RuntimeException("Error encounter during data import process: ", e);
+                }
+            }
+        });
+    }
 
     @Override
     public NotesTuple parseFullDataNotes(Path directory) throws Exception {

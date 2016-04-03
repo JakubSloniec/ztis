@@ -48,7 +48,7 @@ public interface CsvParserService {
     }
 
 
-    // NotesTuple parseSampleDataNotes(Path directory) throws Exception;
+    void importData() throws Exception;
 
     NotesTuple parseFullDataNotes(Path directory) throws Exception;
 
