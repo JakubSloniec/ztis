@@ -1,4 +1,4 @@
-package pl.edu.agh.ztis.aspect;
+package pl.edu.agh.ztis.server.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -17,11 +17,11 @@ import org.springframework.util.StopWatch;
 @Component
 public class LoggingAspect {
 
-	@Pointcut("execution(* pl.edu.agh.ztis.controller..*.*(..))")
+	@Pointcut("execution(* pl.edu.agh.ztis.server.controller..*.*(..))")
 	public void restControlPointcut() {
 	}
 
-	@Pointcut("execution(* pl.edu.agh.ztis.service..*.*(..))")
+	@Pointcut("execution(* pl.edu.agh.ztis.server.service..*.*(..))")
 	public void sevicePointcut() {
 	}
 

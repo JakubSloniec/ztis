@@ -1,7 +1,7 @@
-package pl.edu.agh.ztis.service;
+package pl.edu.agh.ztis.server.service;
 
-import pl.edu.agh.ztis.entity.TaggedNote;
 import pl.edu.agh.ztis.entity.RawNote;
+import pl.edu.agh.ztis.entity.TaggedNote;
 import pl.edu.agh.ztis.entity.UniqueNote;
 
 import java.nio.file.Path;
@@ -11,6 +11,16 @@ import java.util.List;
  * Created by kkicinger on 01/04/16.
  */
 public interface CsvParserService {
+
+    void importData() throws Exception;
+
+    NotesTuple parseFullDataNotes(Path directory) throws Exception;
+
+    List<RawNote> parseRawNotesFile(Path path) throws Exception;
+
+    List<UniqueNote> parseUniqueNotesFile(Path path) throws Exception;
+
+    List<TaggedNote> parseTaggedNotesFile(Path path) throws Exception;
 
     class NotesTuple {
 
@@ -46,16 +56,5 @@ public interface CsvParserService {
         }
 
     }
-
-
-    void importData() throws Exception;
-
-    NotesTuple parseFullDataNotes(Path directory) throws Exception;
-
-    List<RawNote> parseRawNotesFile(Path path) throws Exception;
-
-    List<UniqueNote> parseUniqueNotesFile(Path path) throws Exception;
-
-    List<TaggedNote> parseTaggedNotesFile(Path path) throws Exception;
 
 }

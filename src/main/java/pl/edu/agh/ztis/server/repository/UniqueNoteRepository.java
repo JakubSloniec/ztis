@@ -1,9 +1,9 @@
-package pl.edu.agh.ztis.repository;
+package pl.edu.agh.ztis.server.repository;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pl.edu.agh.ztis.entity.RawNote;
+import pl.edu.agh.ztis.entity.UniqueNote;
 
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -14,6 +14,6 @@ import javax.persistence.PersistenceContextType;
 
 @Repository
 @PersistenceContext(type = PersistenceContextType.EXTENDED)
-public interface RawNoteRepository extends CrudRepository<RawNote, Long>, JpaSpecificationExecutor<RawNote> {
+public interface UniqueNoteRepository extends CrudRepository<UniqueNote, Long>, JpaSpecificationExecutor<UniqueNote> {
 }
 

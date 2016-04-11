@@ -1,4 +1,4 @@
-package pl.edu.agh.ztis.controller;
+package pl.edu.agh.ztis.server.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.edu.agh.ztis.service.CsvParserService;
+import pl.edu.agh.ztis.server.service.CsvParserService;
 
 /**
  * Created by Jakub Sloniec on 2016-04-03.

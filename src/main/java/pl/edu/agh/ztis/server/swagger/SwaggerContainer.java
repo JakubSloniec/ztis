@@ -1,4 +1,4 @@
-package pl.edu.agh.ztis.swagger;
+package pl.edu.agh.ztis.server.swagger;
 
 /**
  * Created by Jakub Sloniec on 2016-03-31.

@@ -1,4 +1,4 @@
-package pl.edu.agh.ztis.repository;
+package pl.edu.agh.ztis.server.repository;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;

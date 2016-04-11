@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @SpringBootApplication
-//public class Application extends SpringBootServletInitializer {
-public class Application {
+public class ServerApp {
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(ServerApp.class, args);
+    }
 
-	@RequestMapping("/")
-	public String swagger() {
-		return "redirect:/swagger-ui.html";
-	}
+    @RequestMapping("/")
+    public String swagger() {
+        return "redirect:/swagger-ui.html";
+    }
+
 }

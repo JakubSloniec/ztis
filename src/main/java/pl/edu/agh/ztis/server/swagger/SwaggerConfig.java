@@ -1,4 +1,4 @@
-package pl.edu.agh.ztis.swagger;
+package pl.edu.agh.ztis.server.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
