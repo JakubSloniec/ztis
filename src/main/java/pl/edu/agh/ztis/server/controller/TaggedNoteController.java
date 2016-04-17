@@ -34,7 +34,7 @@ public class TaggedNoteController {
         return noteService.getOne(id);
     }
 
-    @RequestMapping(value = "/raw/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     @ApiOperation(value = "save note", notes = "saves note", response = TaggedNote.class)
     TaggedNote saveOne(@RequestBody TaggedNote note) {
         return noteService.save(note);
