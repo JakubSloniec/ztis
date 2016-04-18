@@ -34,7 +34,7 @@ public class UniqueNoteController {
         return noteService.getOne(id);
     }
 
-    @RequestMapping(value = "/raw/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     @ApiOperation(value = "save note", notes = "saves note", response = UniqueNote.class)
     UniqueNote saveOne(@RequestBody UniqueNote note) {
         return noteService.save(note);
