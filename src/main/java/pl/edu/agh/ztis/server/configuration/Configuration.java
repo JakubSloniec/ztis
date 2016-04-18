@@ -31,4 +31,6 @@ public class Configuration {
     private static final String GEOMEDIA_FULL_DATA = "Geomedia_extract_AGENDA/Geomedia_extract_AGENDA";
     public static final Path GEOMEDIA_FULL_DATA_PATH = Paths.get(GEOMEDIA_HOME, GEOMEDIA_FULL_DATA);
 
+    public static final String APP_TITLE = "Geomedia Notes Analyser";
+
 }
