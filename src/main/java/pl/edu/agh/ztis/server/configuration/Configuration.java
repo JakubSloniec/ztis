@@ -33,4 +33,23 @@ public class Configuration {
 
     public static final String APP_TITLE = "Geomedia Notes Analyser";
 
+    private static final String IBM_ALCHEMY_BASE_URL = "http://gateway-a.watsonplatform.net/calls";
+    private static final String IBM_ALCHEMY_TEXT_BASE_URL = IBM_ALCHEMY_BASE_URL + "/text";
+    public static final String IBM_ALCHEMY_KEYWORDS_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetRankedKeywords";
+    public static final String IBM_ALCHEMY_TAXONOMY_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetRankedTaxonomy";
+
+    public static final String IBM_ALCHEMY_DEFAULT_API_KEY = "aed104a71c35e94bbce01ab18cbf48d63f6c9424";
+    public static final String IBM_ALCHEMY_DEFAULT_SENTIMENT = "1";
+    public static final String IBM_ALCHEMY_DEFAULT_OUTPUT_MODE = "json";
+
+    public static class Params {
+
+        public static final String IBM_ALCHEMY_API_KEY = "apikey";
+        public static final String IBM_ALCHEMY_TEXT = "text";
+        public static final String IBM_ALCHEMY_SENTIMENT = "sentiment";
+        public static final String IBM_ALCHEMY_OUTPUT_MODE = "outputMode";
+        public static final String IBM_ALCHEMY_KNOWLEDGE_GRAPH_MODE = "knowledgeGraph";
+
+    }
+
 }

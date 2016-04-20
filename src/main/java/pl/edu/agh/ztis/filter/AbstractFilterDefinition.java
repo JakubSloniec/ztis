@@ -12,4 +12,5 @@ public abstract class AbstractFilterDefinition<T, E> implements IFilter<T> {
     protected AbstractFilterDefinition(Function<T, E> mapperFunction) {
         this.mapperFunction = mapperFunction;
     }
+
 }
