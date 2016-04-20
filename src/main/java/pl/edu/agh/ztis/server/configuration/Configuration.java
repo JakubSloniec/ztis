@@ -37,6 +37,9 @@ public class Configuration {
     private static final String IBM_ALCHEMY_TEXT_BASE_URL = IBM_ALCHEMY_BASE_URL + "/text";
     public static final String IBM_ALCHEMY_KEYWORDS_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetRankedKeywords";
     public static final String IBM_ALCHEMY_TAXONOMY_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetRankedTaxonomy";
+    public static final String IBM_ALCHEMY_EMOTIONS_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetEmotion";
+    public static final String IBM_ALCHEMY_CONCEPT_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetRankedConcepts";
+    public static final String IBM_ALCHEMY_SENTIMENT_URL = IBM_ALCHEMY_TEXT_BASE_URL + "/TextGetTextSentiment";
 
     public static final String IBM_ALCHEMY_DEFAULT_API_KEY = "aed104a71c35e94bbce01ab18cbf48d63f6c9424";
     public static final String IBM_ALCHEMY_DEFAULT_SENTIMENT = "1";
